@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador de Mapa do GeoQR</title>
+    <style>
+      body {
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnk7bhSwjKAw-_TXZgzLuV1oRBje3unesNsvJZ4AniEV2WrCnD0ZHHdg0sY7WQ3QK1UUk&usqp=CAU");
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: 500px 250px;
+        margin: 0;
+      }
+      .container {
+        display: grid;
+        place-items: center;
+        margin-top: 250px;
+      }
+
+      .form-group {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      h1 {
+        font-size: 3em;
+      }
+
+      .subtitulo {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-top: 0px;
+      }
+
+      input[type="file"] {
+        margin-top: 0px;
+      }
+
+      .download-button {
+        display: block;
+        margin: 20px auto;
+        width: 10%;
+        font-size: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Criar Mapas de Rondas</h1>
+      <p class="subtitulo">Escolha os arquivos para criar os mapas!</p>
+    </div>
+    <form action="/upload" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="arquivos">Selecione os arquivos CSV:</label>
+        <input type="file" name="arquivos[]" multiple accept=".csv" required />
+        <button type="submit">Enviar</button>
+      </div>
+      <br />
+    </form>
+  </body>
+</html>

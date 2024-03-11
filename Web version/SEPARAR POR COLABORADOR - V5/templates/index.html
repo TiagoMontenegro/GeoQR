@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dividir por Usuário</title>
+    <style>
+      body {
+        background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRnk7bhSwjKAw-_TXZgzLuV1oRBje3unesNsvJZ4AniEV2WrCnD0ZHHdg0sY7WQ3QK1UUk&usqp=CAU");
+        background-repeat: no-repeat;
+        background-position: top;
+        background-size: 500px 250px;
+        margin: 0;
+      }
+
+      .container {
+        display: grid;
+        place-items: center;
+        margin-top: 250px;
+      }
+
+      .form-group {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      h1 {
+        font-size: 3em;
+      }
+
+      .subtitulo {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-top: 0px;
+      }
+
+      input[type="file"] {
+        margin-top: 0px;
+      }
+
+      .download-button {
+        display: block;
+        margin: 20px auto;
+        width: 10%;
+        font-size: 1em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Dividir por colaborador</h1>
+      <p class="subtitulo">Selecione o arquivo .CSV!</p>
+    </div>
+    <form action="/" method="post" enctype="multipart/form-data">
+      <div class="form-group">
+        <input type="file" name="arquivo" accept=".csv" required />
+        <button type="submit">Enviar</button>
+      </div>
+    </form>
+
+    <!-- Botão de download -->
+    <button
+      type="button"
+      id="download-button"
+      class="download-button"
+      style="display: none"
+    >
+      Download
+    </button>
+
+    {% with messages = get_flashed_messages() %} {% if messages %}
+    <script>
+      document.getElementById("download-button").style.display = "block";
+    </script>
+    {% endif %} {% endwith %}
+    <script>
+      const downloadButton = document.getElementById("download-button");
+
+      downloadButton.addEventListener("click", function () {
+        const filename = "arquivos_divididos.zip";
+        const element = document.createElement("a");
+        element.href = "/download";
+        element.download = filename;
+        element.style.display = "none";
+        document.body.appendChild(element);
+        element.click();
+        document.body.removeChild(element);
+
+        window.location.href = "/";
+      });
+    </script>
+  </body>
+</html>
