@@ -12,7 +12,7 @@ import csv
 import zipfile
 
 app = Flask(__name__)
-app.secret_key = "empat@2019"
+app.secret_key = "your_secret_key"
 
 os.chdir(os.path.dirname(os.path.abspath(__file__)))
 
